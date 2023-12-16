@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badc287d3b76df846b54071e538fae33, type: 3}
+  m_Name: HP_Pot
+  m_EditorClassIdentifier: 
+  Name: Potion of HP
+  id: 3
+  value: 5
+  icon: {fileID: 21300000, guid: 9c77cd1d21396334bbffe44a68169a9b, type: 3}
+  IsWeapon: 0
+  damage: 0

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ZScenes/StartScreen.unity
+    guid: 18d158c9e57ae6949a920894718c5c01
+  - enabled: 1
+    path: Assets/ZScenes/CharacterCreation.unity
+    guid: c8b0a212fb759964197f55e398ef75cd
+  - enabled: 1
+    path: Assets/ZScenes/VillageOfBanished.unity
+    guid: fbb453d38aff97b469f69025258f74b3
+  m_configObjects: {}
