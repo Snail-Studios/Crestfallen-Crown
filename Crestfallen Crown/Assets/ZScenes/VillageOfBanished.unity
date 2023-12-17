@@ -8116,6 +8116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMinion: 0
+  IsEnemy: 0
 --- !u!1 &522034111
 GameObject:
   m_ObjectHideFlags: 0
@@ -89718,6 +89719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMinion: 0
+  IsEnemy: 0
 --- !u!4 &901084310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6360971156714540096, guid: daad9ddd71dc7534b875b9a7fd739125, type: 3}
@@ -92426,6 +92428,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285997367}
   m_CullTransparentMesh: 1
+--- !u!1 &1306281790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676768578560100790, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+  m_PrefabInstance: {fileID: 3557376430386876070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1306281794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306281790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a06e566992e9344a179838c4d0372e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMinion: 0
+  IsEnemy: 1
 --- !u!1 &1332975677
 GameObject:
   m_ObjectHideFlags: 0
@@ -96078,6 +96099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMinion: 0
+  IsEnemy: 0
 --- !u!1 &1843339881
 GameObject:
   m_ObjectHideFlags: 0
@@ -96124,6 +96146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMinion: 0
+  IsEnemy: 0
 --- !u!1 &1846148511
 GameObject:
   m_ObjectHideFlags: 0
@@ -96311,6 +96334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMinion: 0
+  IsEnemy: 0
 --- !u!4 &1879284269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1144586411482924131, guid: ed8759262b6046840a18354bff4a1aeb, type: 3}
@@ -101538,10 +101562,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8180370089561041012, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180370089561041012, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180370089561041012, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5676768578560100790, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1306281794}
   m_SourcePrefab: {fileID: 100100000, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
 --- !u!1001 &5673870071539610611
 PrefabInstance:
