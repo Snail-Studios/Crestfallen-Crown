@@ -18,6 +18,8 @@ public class NPC_Talk : MonoBehaviour
     public GameObject YNButton;
     public LayerOptions QuestType;
     public int ItemNeeded;
+    public GameObject areatogo;
+    [SerializeField]bool atplace = false;
     public List<GameObject> EnemysToDie = new List<GameObject>();
     public string completedDialouge;
     bool questcomp = false;
@@ -53,7 +55,7 @@ public class NPC_Talk : MonoBehaviour
 
         if(IStalkable)
         {
-            if (Input.GetKeyUp("e") && talking == false)
+            if (Input.GetKeyUp("e") && talking == false && questcomp == false)
             {
                 talkUI.SetActive(true);
                 talkUI.GetComponentInChildren<TMP_Text>().text = dialouge;
@@ -61,7 +63,21 @@ public class NPC_Talk : MonoBehaviour
                 //talkUI.GetComponentInChildren<Button>().onClick.AddListener(Quest);
                 talking = true;
             }
-            else if(Input.GetKeyUp("e") && talking)
+            else if(Input.GetKeyUp("e") && talking && questcomp == false)
+            {
+                talking = false;
+                talkUI.SetActive(false);
+                YNButton.SetActive(false);
+            }
+            else if (Input.GetKeyUp("e") && talking == false && questcomp)
+            {
+                talkUI.SetActive(true);
+                talkUI.GetComponentInChildren<TMP_Text>().text = completedDialouge;
+                NPC.sprite = this.GetComponent<SpriteRenderer>().sprite;
+                talking = true;
+                //YNButton.SetActive(false);
+            }
+            else if (Input.GetKeyUp("e") && talking && questcomp)
             {
                 talking = false;
                 talkUI.SetActive(false);
@@ -69,7 +85,7 @@ public class NPC_Talk : MonoBehaviour
             }
         }
 
-        if (talking && QuestGiver)
+        if (talking && QuestGiver && questcomp == false)
         {
             YNButton.SetActive(true);
         }
@@ -99,6 +115,11 @@ public class NPC_Talk : MonoBehaviour
         {
             IStalkable = true;
         }
+
+        if(collision.name == areatogo.name)
+        {
+            atplace = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -116,6 +137,10 @@ public class NPC_Talk : MonoBehaviour
     public void AcceptQuest()
     {
         Questaccepted = true;
+        if(QuestType == LayerOptions.Guide)
+        {
+            this.GetComponent<FollowMinion>().enabled = true;
+        }
     }
 
     public void Quest()
@@ -153,6 +178,15 @@ public class NPC_Talk : MonoBehaviour
             if(EnemysToDie.Count == 0)
             {
                 questcomp = true;
+            }
+        }
+        if(QuestType == LayerOptions.Guide)
+        {
+            if (atplace)
+            {
+                questcomp = true;
+                GetComponent<FollowMinion>().enabled = false;
+                this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
     }

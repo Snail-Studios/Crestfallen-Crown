@@ -329,7 +329,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 321510377}
         m_TargetAssemblyTypeName: NPC_Talk, Assembly-CSharp
-        m_MethodName: Quest
+        m_MethodName: AcceptQuest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6786,6 +6786,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308444826}
   m_CullTransparentMesh: 1
+--- !u!1 &313252351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 313252353}
+  - component: {fileID: 313252352}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!58 &313252352
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313252351}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!4 &313252353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313252351}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -104.39, y: 17.31, z: 0.03931456}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &321510371
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,6 +6867,7 @@ GameObject:
   - component: {fileID: 321510372}
   - component: {fileID: 321510376}
   - component: {fileID: 321510377}
+  - component: {fileID: 321510378}
   m_Layer: 0
   m_Name: Harold the giver of quests
   m_TagString: Untagged
@@ -6833,7 +6901,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &321510373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6841,7 +6909,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321510371}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -7002,12 +7070,33 @@ MonoBehaviour:
   NPC: {fileID: 1677676073}
   QuestGiver: 1
   YNButton: {fileID: 17658435}
-  QuestType: 3
+  QuestType: 2
   ItemNeeded: 201
+  areatogo: {fileID: 313252351}
+  atplace: 0
   EnemysToDie:
   - {fileID: 679718995}
   - {fileID: 973502802}
-  completedDialouge: 
+  completedDialouge: You truly are of warrior blood after all then welcome to the
+    village of the banished brother
+--- !u!114 &321510378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321510371}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25488c260e4adf74e8a3ecc7dfdb64c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTarget: {fileID: 0}
+  targetTransform: {fileID: 1769035825}
+  followSpeed: 5
+  stoppingDistance: 2
+  attackRange: 5
+  attackCooldown: 2
 --- !u!1 &332160980
 GameObject:
   m_ObjectHideFlags: 0
@@ -91190,6 +91279,8 @@ MonoBehaviour:
   YNButton: {fileID: 0}
   QuestType: 0
   ItemNeeded: 0
+  areatogo: {fileID: 0}
+  atplace: 0
   EnemysToDie: []
   completedDialouge: 
 --- !u!58 &1090946415
@@ -101688,3 +101779,4 @@ SceneRoots:
   - {fileID: 462401036}
   - {fileID: 906738452}
   - {fileID: 758594414}
+  - {fileID: 313252353}
