@@ -24,6 +24,9 @@ public class NPC_Talk : MonoBehaviour
     public string completedDialouge;
     bool questcomp = false;
     bool Questaccepted = false;
+    [SerializeField] string fetchdialouge;
+    [SerializeField] string Killdialouge;
+    [SerializeField] string Guiddialouge;
 
     public enum LayerOptions
     {
@@ -38,6 +41,18 @@ public class NPC_Talk : MonoBehaviour
     {
         interact.SetActive(false);
         IStalkable = false;
+        if(QuestType == LayerOptions.Fetch)
+        {
+            dialouge =  fetchdialouge;
+        }
+        else if(QuestType == LayerOptions.Guide)
+        {
+            dialouge = Guiddialouge;
+        }
+        else if(QuestType == LayerOptions.Kill)
+        {
+            dialouge = Killdialouge;
+        }
     }
 
     // Update is called once per frame

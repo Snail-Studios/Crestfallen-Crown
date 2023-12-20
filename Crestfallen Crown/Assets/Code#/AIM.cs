@@ -9,7 +9,8 @@ public class AIM : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  if(IsMinion == false)
+    { 
+        if(IsMinion == false && IsEnemy == false)
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 5.23f;
@@ -34,14 +35,18 @@ public class AIM : MonoBehaviour
         }
         else if (IsEnemy)
         {
-            Vector2 objectPos = GameObject.FindWithTag("Player").transform.position;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-            Vector2 direction = objectPos - (Vector2)transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Vector3 directionToPlayer = player.transform.position - transform.position;
 
-            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            transform.rotation = rotation;
-            transform.position = GetComponentInParent<Transform>().position;
+            // Calculate the rotation angle in radians
+            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x);
+
+            // Convert the angle to degrees
+            float angleInDegrees = angle * Mathf.Rad2Deg;
+
+            // Rotate the object to face the player
+            transform.rotation = Quaternion.Euler(0, 0, angleInDegrees);
         }
     }
 }

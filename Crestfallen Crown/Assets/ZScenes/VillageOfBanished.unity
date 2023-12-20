@@ -6837,7 +6837,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
 --- !u!4 &313252353
 Transform:
   m_ObjectHideFlags: 0
@@ -6847,7 +6847,7 @@ Transform:
   m_GameObject: {fileID: 313252351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -104.39, y: 17.31, z: 0.03931456}
+  m_LocalPosition: {x: -104.17, y: 21.02, z: 0.03931456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7065,13 +7065,12 @@ MonoBehaviour:
   IStalkable: 1
   interact: {fileID: 1677612715}
   talkUI: {fileID: 1281732269}
-  dialouge: Hello If you want acces to this tavern you must go down to the cemetery
-    and slaughter the skeletons staying there (Kill 4 skeletons)
+  dialouge: 
   NPC: {fileID: 1677676073}
   QuestGiver: 1
   YNButton: {fileID: 17658435}
-  QuestType: 2
-  ItemNeeded: 201
+  QuestType: 3
+  ItemNeeded: 501
   areatogo: {fileID: 313252351}
   atplace: 0
   EnemysToDie:
@@ -7079,6 +7078,12 @@ MonoBehaviour:
   - {fileID: 973502802}
   completedDialouge: You truly are of warrior blood after all then welcome to the
     village of the banished brother
+  fetchdialouge: Hello if you wish to gain acces to this taven you must bring me
+    the mighty hammer to fix the toilets
+  Killdialouge: Hello If you want acces to this tavern you must go down to the cemetery
+    and slaughter the skeletons staying there (Kill 4 skeletons)
+  Guiddialouge: Hello I hear you want access to this taven if so then you must take
+    me to the apple tree just up the road the highest tree in the village
 --- !u!114 &321510378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91283,6 +91288,9 @@ MonoBehaviour:
   atplace: 0
   EnemysToDie: []
   completedDialouge: 
+  fetchdialouge: 
+  Killdialouge: 
+  Guiddialouge: 
 --- !u!58 &1090946415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -100676,7 +100684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5325585242787321560, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
