@@ -161,6 +161,7 @@ public class EnemyController : MonoBehaviour
     {
         timeSinceLastAttack = 0f;
         anim.Play("Attack");
+        //anim.gameObject.transform.position = new Vector3(0, 0, 0);
         Debug.Log("Attack");
     }
 

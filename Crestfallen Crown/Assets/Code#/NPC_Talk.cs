@@ -22,11 +22,12 @@ public class NPC_Talk : MonoBehaviour
     [SerializeField]bool atplace = false;
     public List<GameObject> EnemysToDie = new List<GameObject>();
     public string completedDialouge;
-    bool questcomp = false;
+    [SerializeField]bool questcomp = false;
     bool Questaccepted = false;
     [SerializeField] string fetchdialouge;
     [SerializeField] string Killdialouge;
     [SerializeField] string Guiddialouge;
+    [SerializeField] Transform questdone;
 
     public enum LayerOptions
     {
@@ -116,6 +117,7 @@ public class NPC_Talk : MonoBehaviour
         if (questcomp)
         {
             Debug.Log("Quest Complete");
+            transform.position = questdone.position;
         }
 
         if (Questaccepted)
@@ -155,6 +157,11 @@ public class NPC_Talk : MonoBehaviour
         if(QuestType == LayerOptions.Guide)
         {
             this.GetComponent<FollowMinion>().enabled = true;
+            Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
+
+            // Remove constraints on the x-axis
+            rb2d.constraints = rb2d.constraints & ~RigidbodyConstraints2D.FreezePositionX;
+            rb2d.constraints = rb2d.constraints & ~RigidbodyConstraints2D.FreezePositionY;
         }
     }
 
