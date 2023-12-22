@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 lastKnownPlayerPosition;
     private bool hasLineOfSight = false;
     private Rigidbody2D rb;
-    private int HP;
+    public int HP;
     private Animator anim;
 
     // Attack variables

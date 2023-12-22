@@ -8,7 +8,8 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
 {
     #region variables
     //movement
-
+    public float dodgeCooldown = 0f; // Adjust the cooldown time as needed
+    private bool isDodging = false;
     Vector2 movement;
     [SerializeField] public float move;
     private Rigidbody2D rb;
@@ -125,6 +126,12 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
     {
         //Debug.Log(PC.playerspr.ToString());
 
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isDodging && !inMech)
+        {
+            StartCoroutine(Dodge());
+        }
+
         PC.playerspr = SR.sprite;
 
         if (isCooldown)
@@ -218,6 +225,32 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
         Debug.Log("Picked up: " + item.itemName);
 
         inventoryUIScript.UpdateInventoryUI();
+    }
+
+    IEnumerator Dodge()
+    {
+        isDodging = true;
+
+        // Save the current speed for restoration after the dodge
+        float originalMoveSpeed = move;
+
+        // Modify the movement speed during the dodge
+        move *= 2f; // You can adjust the dodge speed multiplier
+
+        // Perform the dodge movement (you may want to add animation)
+        Vector2 dodgeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        rb.velocity = dodgeDirection * move;
+
+        // Wait for a short duration for the dodge
+        yield return new WaitForSeconds(0.5f); // You can adjust the dodge duration
+
+        // Restore the original movement speed
+        move = originalMoveSpeed;
+
+        // Reset velocity and cooldown
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(dodgeCooldown);
+        isDodging = false;
     }
 
     #region attacks
@@ -378,11 +411,14 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
 
     public void PDMG(int damage)
     {
-        HP -= damage;
-        StartCoroutine(Invincible());
-        if (HP <= 0)
+        if (!isDodging)
         {
-            Debug.Log("DED");
+            HP -= damage;
+            StartCoroutine(Invincible());
+            if (HP <= 0)
+            {
+                Debug.Log("DED");
+            }
         }
     }
 
