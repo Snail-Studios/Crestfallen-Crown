@@ -27,7 +27,7 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
     public SpriteRenderer ASR;
     PlayerSprite PS;
     //misc
-
+    public static Move2_0 instance;
     public Camera cam;
     public Animator anim;
     bool inMech = false;
@@ -112,6 +112,16 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
         //Inteligence_text = GameObject.Find("Inteligence");
         //Connection_tex = GameObject.Find("Connection");
         rb = GetComponent<Rigidbody2D>();
+        if (instance != null && instance != this)
+        {
+            // If an instance already exists, destroy this GameObject
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Set the instance to this GameObject
+            instance = this;
+        }
         //inventory = GameObject.Find("InventoryManager").GetComponent<Inventory>();
         inventoryUIScript = GameObject.Find("UImanager").GetComponent<InventoryUIScript>();
         anim = GetComponent<Animator>();
@@ -119,7 +129,8 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
         cooldownImage2.fillAmount = 0;
 
     }
-#endregion
+
+    #endregion
 
     // Update is called once per frame
     void Update()

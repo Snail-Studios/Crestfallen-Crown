@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ZScenes/VillageOfBanished.unity
     guid: fbb453d38aff97b469f69025258f74b3
+  - enabled: 1
+    path: Assets/ZScenes/Tavern.unity
+    guid: e9b57b3855b105c4382ab0261e571f0b
   m_configObjects: {}
