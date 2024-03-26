@@ -156,4 +156,4 @@ MonoBehaviour:
     isarmour: 0
     isuseable: 0
     VALUE: 5
-    ATK: {fileID: 0}
+    ATK: {fileID: 2713973277899031889, guid: ca563e0400437e34b8fe5fa57941a296, type: 3}

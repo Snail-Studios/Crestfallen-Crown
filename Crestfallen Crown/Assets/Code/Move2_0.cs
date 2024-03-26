@@ -225,6 +225,11 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
             }
         }
 
+        if(HP <= 0)
+        {
+            Debug.Log("dead");
+        }
+
     }
 
     public void PickupItem(Item2 item)
@@ -323,7 +328,7 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
         }
         if (obj.CompareTag("Mech"))
         {
-            //inMech = true;
+            inMech = true;
         }
         if (obj.CompareTag("Minion"))
         {
@@ -380,6 +385,14 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
             // Set the velocity of the object in the direction of its rotation
             float speed = 5f; // You can adjust the speed as needed
             rb.velocity = obj.transform.right * speed;
+        }
+        if (obj.CompareTag("Mech"))
+        {
+            inMech = true;
+        }
+        if (obj.CompareTag("Minion"))
+        {
+            obj.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

@@ -13,6 +13,7 @@ public class ChangeScene : MonoBehaviour
         {
             DontDestroyOnLoad(collision.gameObject);
             SceneManager.LoadScene(scenetogo);
+            DontDestroyOnLoad(collision.gameObject);
         }
     }
 }

@@ -22,12 +22,14 @@ public class NPC_Talk : MonoBehaviour
     [SerializeField]bool atplace = false;
     public List<GameObject> EnemysToDie = new List<GameObject>();
     public string completedDialouge;
-    [SerializeField]bool questcomp = false;
-    bool Questaccepted = false;
+    public bool questcomp = false;
+    public bool Questaccepted = false;
     [SerializeField] string fetchdialouge;
     [SerializeField] string Killdialouge;
     [SerializeField] string Guiddialouge;
     [SerializeField] Transform questdone;
+
+    bool hassent = false;
 
     public enum LayerOptions
     {
@@ -59,6 +61,12 @@ public class NPC_Talk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(hassent == false && questcomp)
+        {
+            hassent = true;
+            GameObject.Find("QM").GetComponent<QuestManager>().AddNPC(this.gameObject);
+        }
+
         if (IStalkable)
         {
             interact.SetActive(true);
@@ -116,6 +124,7 @@ public class NPC_Talk : MonoBehaviour
 
         if (questcomp)
         {
+            Questaccepted = true;
             Debug.Log("Quest Complete");
             transform.position = questdone.position;
         }
