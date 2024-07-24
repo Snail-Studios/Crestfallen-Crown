@@ -79,34 +79,7 @@ public class NPC_Talk : MonoBehaviour
 
         if(IStalkable)
         {
-            if (Input.GetKeyUp("e") && talking == false && questcomp == false)
-            {
-                talkUI.SetActive(true);
-                talkUI.GetComponentInChildren<TMP_Text>().text = dialouge;
-                NPC.sprite = this.GetComponent<SpriteRenderer>().sprite;
-                //talkUI.GetComponentInChildren<Button>().onClick.AddListener(Quest);
-                talking = true;
-            }
-            else if(Input.GetKeyUp("e") && talking && questcomp == false)
-            {
-                talking = false;
-                talkUI.SetActive(false);
-                YNButton.SetActive(false);
-            }
-            else if (Input.GetKeyUp("e") && talking == false && questcomp)
-            {
-                talkUI.SetActive(true);
-                talkUI.GetComponentInChildren<TMP_Text>().text = completedDialouge;
-                NPC.sprite = this.GetComponent<SpriteRenderer>().sprite;
-                talking = true;
-                //YNButton.SetActive(false);
-            }
-            else if (Input.GetKeyUp("e") && talking && questcomp)
-            {
-                talking = false;
-                talkUI.SetActive(false);
-                YNButton.SetActive(false);
-            }
+            StartCoroutine(donetext());
         }
 
         if (talking && QuestGiver && questcomp == false)
@@ -122,7 +95,7 @@ public class NPC_Talk : MonoBehaviour
             }
         }
 
-        if (questcomp)
+        if (questcomp && talking)
         {
             Questaccepted = true;
             Debug.Log("Quest Complete");
@@ -176,41 +149,47 @@ public class NPC_Talk : MonoBehaviour
 
     public void Quest()
     {
-        if (GameObject.Find("InventoryManager"))
+        if (talking)
         {
-            Debug.Log("Found");
-        }
-
-        if (QuestType == LayerOptions.Fetch)
-        {
-            if (GameObject.Find("InventoryManager").GetComponent<Inventory>())
+            if (GameObject.Find("InventoryManager"))
             {
-                Inventory Inven = GameObject.Find("InventoryManager").GetComponent<Inventory>();
-                foreach (Item2 I in Inven.items)
+                Debug.Log("Found");
+            }
+
+            if (QuestType == LayerOptions.Fetch && Questaccepted)
+            {
+                if (GameObject.Find("InventoryManager").GetComponent<Inventory>())
                 {
-                    if (I.itemID == ItemNeeded)
+                    Inventory Inven = GameObject.Find("InventoryManager").GetComponent<Inventory>();
+                    foreach (Item2 I in Inven.items)
                     {
-                        questcomp = true;
+                        if (I.itemID == ItemNeeded)
+                        {
+                            Inven.RemoveItem(I);
+                            questcomp = true;
+
+                        }
                     }
                 }
             }
-        }
-        if (QuestType == LayerOptions.Kill)
-        {
-            Debug.Log("KILL");
-            foreach(GameObject i in EnemysToDie)
+            if (QuestType == LayerOptions.Kill)
             {
-                if(i == null)
+                Debug.Log("KILL");
+                foreach (GameObject i in EnemysToDie)
                 {
-                    EnemysToDie.Remove(i);
+                    if (i == null)
+                    {
+                        EnemysToDie.Remove(i);
+                    }
+                }
+
+                if (EnemysToDie.Count == 0)
+                {
+                    questcomp = true;
                 }
             }
-
-            if(EnemysToDie.Count == 0)
-            {
-                questcomp = true;
-            }
         }
+      
         if(QuestType == LayerOptions.Guide)
         {
             if (atplace)
@@ -222,4 +201,37 @@ public class NPC_Talk : MonoBehaviour
         }
     }
 
+
+    IEnumerator donetext()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (Input.GetKeyUp("e") && talking == false && questcomp == false)
+        {
+            talkUI.SetActive(true);
+            talkUI.GetComponentInChildren<TMP_Text>().text = dialouge;
+            NPC.sprite = this.GetComponent<SpriteRenderer>().sprite;
+            //talkUI.GetComponentInChildren<Button>().onClick.AddListener(Quest);
+            talking = true;
+        }
+        else if (Input.GetKeyUp("e") && talking && questcomp == false)
+        {
+            talking = false;
+            talkUI.SetActive(false);
+            YNButton.SetActive(false);
+        }
+        else if (Input.GetKeyUp("e") && talking == false && questcomp)
+        {
+            talkUI.SetActive(true);
+            talkUI.GetComponentInChildren<TMP_Text>().text = completedDialouge;
+            NPC.sprite = this.GetComponent<SpriteRenderer>().sprite;
+            talking = true;
+            //YNButton.SetActive(false);
+        }
+        else if (Input.GetKeyUp("e") && talking && questcomp)
+        {
+            talking = false;
+            talkUI.SetActive(false);
+            YNButton.SetActive(false);
+        }
+    }
 }

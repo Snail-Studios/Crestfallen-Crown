@@ -58,23 +58,7 @@ public class InventoryUIScript : MonoBehaviour
         //UpdateInventoryUI();
     }
 
-    private void Update()
-    {
-        DMG.text = "DMG:" + damage;
-        Cool.text = "Cooldown:" + Cooldown + "S";
-        VAL.text = "Value:" + Value + "G";
-        //UpdateInventoryUI();
 
-        if (Slot1E.childCount == 0)
-        {
-            player.Equipslot1(0, 0, null);
-        }
-
-        if (Slot2E.childCount == 0)
-        {
-            player.Equipslot2(0, 0, null);
-        }
-    }
 
     public void DescriptOpen()
     {
@@ -165,33 +149,7 @@ public class InventoryUIScript : MonoBehaviour
         }
     }
 
-    public void Equip1()
-    {
-        if (selected != null)
-        {
-            //If theres no pre equiped weapons
-            if (Slot1E.childCount == 0)
-            {
-                inventory.RemoveItem(item2);
-                selected.transform.SetParent(Slot1E);
-                selected = null;
-                player.Equipslot1(Cooldown, damage, ATK);
-                //UpdateItemSelect("null", "null", NULLICON, 0, null, false, false, false, 0, 0, 0, 0, 0, null, null);
-            }
-            //if there is
-            else
-            {            
-                GameObject Old = Slot1E.GetChild(0).gameObject;
-                inventory.AddItem(Old.GetComponent<ItemSelect>().IT2);
-                Old.transform.SetParent(content);
-                player.Equipslot1(0, 0, null);
-                selected.transform.SetParent(Slot1E);
-                selected = null;
-                inventory.RemoveItem(item2);
-                player.Equipslot1(Cooldown, damage, ATK);
-            }
-        }
-    }
+    
 
     public void OnApplicationQuit()
     {
@@ -202,30 +160,6 @@ public class InventoryUIScript : MonoBehaviour
         inventory.AddItem(Old2.GetComponent<ItemSelect>().IT2);
     }
 
-    public void Equip2()
-    {
-        if (selected != null)
-        {
-            if (Slot2E.childCount == 0)
-            {
-                inventory.RemoveItem(item2);
-                selected.transform.SetParent(Slot2E);
-                selected = null;
-                player.Equipslot2(Cooldown, damage, ATK);
-                //UpdateItemSelect("null", "null", NULLICON, 0, null, false, false, false, 0, 0, 0, 0, 0, null, null);
-            }
-            else
-            {
-                Transform Old = Slot2E.GetChild(0);
-                inventory.AddItem(Old.GetComponent<ItemSelect>().IT2);
-                Old.SetParent(content);
-                player.Equipslot2(0, 0, null);
-                selected.transform.SetParent(Slot2E);
-                selected = null;
-                inventory.RemoveItem(item2);
-                player.Equipslot2(Cooldown, damage, ATK);
-            }
-        }
-    }
+
 
 }

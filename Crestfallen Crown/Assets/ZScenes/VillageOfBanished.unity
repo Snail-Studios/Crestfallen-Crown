@@ -8863,6 +8863,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6055646985926889154, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: HP
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -96016,6 +96020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6055646985926889154, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: HP
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -97996,7 +98004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dodgeCooldown: 0
   move: 5
-  IsFallen: 1
+  IsFallen: 0
   IsElf: 0
   IsDwarf: 0
   IsNecromancer: 0
@@ -98040,7 +98048,7 @@ MonoBehaviour:
     VALUE: 0
     ATK: {fileID: 0}
     defense: 0
-  inven: {fileID: 688068430}
+  inven: {fileID: 0}
   invenopen: 0
   cooldownTime: 1
   timer: 0
@@ -102654,6 +102662,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6055646985926889154, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: HP
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -103608,6 +103620,10 @@ PrefabInstance:
     - target: {fileID: 5325585242787321560, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055646985926889154, guid: 1372faf720801154cb0e1ed8cb04291c, type: 3}
+      propertyPath: HP
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

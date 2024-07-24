@@ -104,13 +104,32 @@ public class Move2_0 : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
-        //SR.sprite = PC.playerspr;
-        //ASR.sprite = PC.addonspr;
-        //Magic_text = GameObject.Find("Magic");
-        //Strength_text = GameObject.Find("Strength");
-        //Stealth_text = GameObject.Find("Stealth");
-        //Inteligence_text = GameObject.Find("Inteligence");
-        //Connection_tex = GameObject.Find("Connection");
+
+
+        if (SR.sprite.name.Contains("Troll"))
+        {
+            IsTroll = true;
+        }
+
+        if (SR.sprite.name.Contains("Dwarf"))
+        {
+            IsDwarf = true;
+        }
+
+        if (SR.sprite.name.Contains("Fallen"))
+        {
+            IsFallen = true;
+        }
+
+        if (SR.sprite.name.Contains("Elf"))
+        {
+            IsElf = true;
+        }
+
+        if (SR.sprite.name.Contains("Necromancer"))
+        {
+            IsNecromancer = true;
+        }
         rb = GetComponent<Rigidbody2D>();
         if (instance != null && instance != this)
         {
